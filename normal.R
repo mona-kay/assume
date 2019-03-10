@@ -11,18 +11,18 @@ normal <- function(df) {
     } else {}
     ifelse(class(df[[x]]) != "numeric", df[[x]],
            ifelse(skew >= 1,
-                  print(paste0(x," is highly positively skewed, with a skewness of ",
-                               skew)),
+                  print(paste0(x," is highly positively skewed (",
+                               skew, "). Recommend a log10(x+1) transformation.")),
                   ifelse(skew <= -1,
-                         print(paste0(x," is highly negatively skewed, with a skewness of ",
-                                      skew)),
+                         print(paste0(x," is highly negatively skewed (",
+                                      skew, "). Recommend a log10(1-x) transformation.")),
                          ifelse(skew > -1 & skew <= -.5,
-                                print(paste0(x," is moderately negatively skewed, with a skewness of ",
-                                             skew)),
+                                print(paste0(x," is moderately negatively skewed (",
+                                             skew, "). Recommend a sqrt(1-x) transformation.")),
                                 ifelse(skew < 1 & skew >= .5,
-                                       print(paste0(x," is moderately positively skewed, with a skewness of ",
-                                                    skew)),
-                                       print(paste0(x, " is not skewed."))
+                                       print(paste0(x," is moderately positively skewed (",
+                                                    skew, "). Recommend a sqrt(x) transformation.")),
+                                       print(paste0(x, " is not skewed (", skew, ")."))
                                   )
                            )
                     )
