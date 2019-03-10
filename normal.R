@@ -6,7 +6,7 @@ normal <- function(df) {
       m <- mean(df[[x]], na.rm = TRUE)
       s1 <- sum((df[[x]]-m)^3, na.rm = TRUE)
       s2 <- sum((df[[x]]-m)^2, na.rm = TRUE)
-      skew <- (s1/l)/(s2/l)^(3/2)
+      skew <- ((s1/l)/(s2/l))^(3/2)
       skew <- round(skew, digits = 2)
     } else {}
     ifelse(class(df[[x]]) != "numeric", df[[x]],
